@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Have a Safe & Wonderful Journey, My Love</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        twilight: {
+                            950: '#0b091a',
+                            900: '#151030',
+                            800: '#24184a',
+                            700: '#3d2263',
+                        },
+                        roseGlow: {
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                        },
+                        sunsetAmber: {
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'floatSlow 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+                        'dash-flow': 'dashFlow 24s linear infinite',
+                    },
+                    keyframes: {
+                        floatSlow: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                        },
+                        dashFlow: {
+                            '0%': { strokeDashoffset: '480' },
+                            '100%': { strokeDashoffset: '0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Dreamy Twilight & Sunset Sky Gradient */
+        body {
+            background: radial-gradient(circle at 50% 0%, #4c235c 0%, #271645 38%, #130e2b 75%, #090717 100%);
+            min-height: 100vh;
+            color: #fdf8f6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.45);
+        }
+
+        .glass-card-hover {
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(253, 164, 175, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 18px 45px -10px rgba(244, 63, 94, 0.22);
+        }
+
+        /* Custom Paper Airplane Path Animation */
+        .plane-motion {
+            offset-path: path("M 15,75 Q 160,10 305,70");
+            animation: flyAcross 9s ease-in-out infinite;
+        }
+
+        @keyframes flyAcross {
+            0% {
+                offset-distance: 0%;
+                opacity: 0;
+                transform: scale(0.75);
+            }
+            12% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            88% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                offset-distance: 100%;
+                opacity: 0;
+                transform: scale(0.75);
+            }
+        }
+
+        /* Modal Transitions */
+        .modal-backdrop {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            transform: scale(0.92) translateY(16px);
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .modal-backdrop.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Checklist strikethrough animation */
+        .check-item-text {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .check-item.completed .check-item-text {
+            color: rgba(253, 248, 246, 0.5);
+            text-decoration: line-through;
+            text-decoration-color: #fb7185;
+        }
+
+        /* Subtle editable underline */
+        .editable-name {
+            border-bottom: 1.5px dashed rgba(253, 164, 175, 0.55);
+            transition: all 0.2s ease;
+        }
+        .editable-name:hover, .editable-name:focus {
+            border-bottom-color: #fda4af;
+            background: rgba(253, 164, 175, 0.12);
+            outline: none;
+        }
+
+        /* Romantic Photo Frame Glow & Ring */
+        .photo-frame-ring {
+            background: linear-gradient(135deg, rgba(253, 164, 175, 0.75), rgba(252, 211, 77, 0.55), rgba(244, 63, 94, 0.75));
+            box-shadow: 0 0 40px -6px rgba(244, 63, 94, 0.45), inset 0 0 18px rgba(255, 255, 255, 0.25);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-rose-400/30 selection:text-rose-200 relative">
+
+    <!-- Ambient Background Canvas for Twinkling Stars & Floating Hearts -->
+    <canvas id="sky-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Celebration Confetti / Hearts Canvas (Foreground) -->
+    <canvas id="celebration-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-50"></canvas>
+
+    <!-- Ambient Sunset Glow Orbs -->
+    <div class="fixed top-[-10%] left-1/2 -translate-x-1/2 w-[540px] h-[340px] bg-rose-500/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[420px] h-[420px] bg-amber-400/10 rounded-full blur-[130px] pointer-events-none z-0"></div>
+
+    <!-- Main Container -->
+    <main class="relative z-10 max-w-2xl mx-auto px-5 pt-10 pb-20 sm:pt-16 sm:pb-24">
+
+        <!-- Top Mini Pill Badge -->
+        <div class="flex justify-center mb-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-xs sm:text-sm font-medium text-rose-200/90 tracking-wide">
+                <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
+                <span>A little pocket of love for your trip</span>
+            </div>
+        </div>
+
+        <!-- HERO SECTION -->
+        <header class="text-center mb-12 sm:mb-16">
+            
+            <!-- =====================================================================
+                 HER PHOTO PLACEHOLDER (CUSTOMIZABLE FOR GITHUB PAGES)
+                 To set a permanent photo before deploying to GitHub Pages:
+                 1. Add her photo (e.g. "her-photo.jpg") to the same GitHub repo folder
+                 2. Set DEFAULT_HER_PHOTO_URL = "./her-photo.jpg" in the <script> below
+                 OR pass ?photo=https://your-image-link.jpg in the page URL!
+                 ===================================================================== -->
+            <div class="flex flex-col items-center mb-7">
+                <div class="relative group">
+                    <!-- Outer Rose-Gold Gradient Ring -->
+                    <div class="photo-frame-ring p-1.5 rounded-full transition-transform duration-500 group-hover:scale-[1.03]">
+                        <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden bg-gradient-to-b from-[#2f1a52] to-[#170f30] flex items-center justify-center">
+                            
+                            <!-- Default Stylish Placeholder (Shown when no photo is loaded) -->
+                            <div id="photo-placeholder" class="flex flex-col items-center justify-center text-center px-4 select-none">
+                                <div class="w-11 h-11 rounded-full bg-rose-500/20 border border-rose-300/35 flex items-center justify-center text-rose-200 mb-2 animate-float-slow">
+                                    <i data-lucide="camera" class="w-5 h-5"></i>
+                                </div>
+                                <span class="font-serif italic text-sm text-rose-100/90 leading-tight">Her Photo Here</span>
+                                <span class="text-[10px] text-rose-200/55 mt-0.5">Tap button to preview</span>
+                            </div>
+
+                            <!-- Actual Image Element (Hidden until photo is uploaded or passed via URL/config) -->
+                            <img id="partner-photo" src="" alt="My Beautiful Partner" class="hidden w-full h-full object-cover object-center" />
+
+                            <!-- Subtle Hover Overlay for Quick Swap -->
+                            <button type="button" onclick="triggerPhotoUpload()" aria-label="Choose a photo of her" class="absolute inset-0 bg-twilight-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white text-xs font-medium gap-1 cursor-pointer">
+                                <i data-lucide="image-plus" class="w-5 h-5 text-rose-300"></i>
+                                <span>Change Photo</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Floating Heart Keepsake Badge -->
+                    <div class="absolute -bottom-1 -right-1 w-9 h-9 rounded-full bg-gradient-to-tr from-rose-500 to-amber-400 border-2 border-[#1b1236] flex items-center justify-center shadow-lg text-white">
+                        <i data-lucide="heart" class="w-4 h-4 fill-white"></i>
+                    </div>
+                </div>
+
+                <!-- Hidden File Input & Action Controls -->
+                <input type="file" id="photo-file-input" accept="image/*" class="hidden" onchange="handlePhotoUpload(event)" />
+
+                <div class="mt-3.5 flex flex-wrap items-center justify-center gap-2">
+                    <button type="button" onclick="triggerPhotoUpload()" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium glass-card hover:bg-white/15 text-rose-100 border border-rose-300/25 transition-all cursor-pointer">
+                        <i data-lucide="upload" class="w-3.5 h-3.5 text-rose-300"></i>
+                        <span id="upload-photo-label">Upload Photo</span>
+                    </button>
+
+                    <button id="remove-photo-btn" type="button" onclick="resetPartnerPhoto()" class="hidden inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 hover:bg-white/15 text-rose-200/75 border border-white/10 transition-all cursor-pointer">
+                        <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+                        <span>Reset</span>
+                    </button>
+                </div>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white mb-4">
+                Have a Safe &amp; Wonderful Journey,
+                <span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-amber-200 to-rose-300">
+                    <span id="partner-name" contenteditable="true" spellcheck="false" role="textbox" aria-label="Partner Name" title="Click to customize name" class="editable-name px-2 py-0.5 rounded-lg cursor-text inline-block">My Love</span>
+                </span>
+            </h1>
+
+            <!-- Subtle Helper Hint for Name/Photo Editing & Share Link -->
+            <div class="mb-6 flex flex-col items-center gap-2">
+                <p class="text-[11px] text-rose-200/55 flex flex-wrap items-center justify-center gap-1.5">
+                    <i data-lucide="sparkles" class="w-3 h-3 text-amber-300/70"></i>
+                    <span>Tap her name to edit, or share with <code class="bg-white/10 px-1.5 py-0.5 rounded text-rose-200/80">?name=HerName&amp;photo=ImageURL</code></span>
+                </p>
+                <button type="button" onclick="copyShareableLink()" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-white/10 hover:bg-white/15 text-amber-200/90 border border-amber-300/25 transition-colors cursor-pointer">
+                    <i data-lucide="link" class="w-3 h-3"></i>
+                    <span id="share-link-label">Copy Personalized Link</span>
+                </button>
+            </div>
+
+            <p class="text-base sm:text-lg text-rose-100/80 max-w-lg mx-auto leading-relaxed font-light">
+                No matter how many miles stretch between us today, my heart is packed right there in your carry-on. Wishing you smooth skies, gentle roads, and endless smiles.
+            </p>
+
+            <!-- Animated Flying Paper Airplane & Dotted Route Illustration -->
+            <div class="mt-8 sm:mt-10 max-w-xs sm:max-w-sm mx-auto relative">
+                <svg viewBox="0 0 320 95" class="w-full h-auto overflow-visible" aria-hidden="true">
+                    <!-- Glowing Origin & Destination Pins -->
+                    <circle cx="15" cy="75" r="4.5" fill="#fb7185" />
+                    <circle cx="15" cy="75" r="10" fill="#fb7185" fill-opacity="0.25" class="animate-pulse" />
+                    
+                    <circle cx="305" cy="70" r="4.5" fill="#fcd34d" />
+                    <circle cx="305" cy="70" r="10" fill="#fcd34d" fill-opacity="0.25" class="animate-pulse" />
+
+                    <!-- Curved Flight Path -->
+                    <path d="M 15,75 Q 160,10 305,70" fill="none" stroke="rgba(253, 164, 175, 0.35)" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" class="animate-dash-flow" />
+
+                    <!-- Animated Paper Airplane SVG -->
+                    <g class="plane-motion">
+                        <g transform="translate(-14, -14)">
+                            <path d="M2 12L22 2L15 22L11 13L2 12Z" fill="#fff1f2" stroke="#fda4af" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="M22 2L11 13" stroke="#fb7185" stroke-width="1.5" stroke-linecap="round"/>
+                        </g>
+                    </g>
+                </svg>
+                <div class="flex justify-between text-[11px] uppercase tracking-widest text-rose-200/60 px-1 -mt-2">
+                    <span>Right Here With You</span>
+                    <span>Safe Arrival</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- SECTION 2: INTERACTIVE "OPEN WHEN..." VIRTUAL ENVELOPES -->
+        <section aria-labelledby="envelopes-heading" class="mb-14 sm:mb-16">
+            <div class="text-center mb-7">
+                <h2 id="envelopes-heading" class="font-serif text-2xl sm:text-3xl font-semibold text-white mb-2">
+                    Open When...
+                </h2>
+                <p class="text-sm text-rose-100/70">
+                    Four little letters written just for different moments of your journey. Tap one to unseal.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Card 1 -->
+                <button type="button" onclick="openEnvelope(0)" class="envelope-btn text-left glass-card glass-card-hover rounded-2xl p-5 sm:p-6 group relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-rose-400">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-rose-400/25 to-amber-300/20 border border-rose-300/30 flex items-center justify-center text-rose-300 group-hover:scale-110 transition-transform">
+                            <i data-lucide="plane-takeoff" class="w-5 h-5"></i>
+                        </div>
+                        <span class="wax-seal inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-200 border border-rose-400/30">
+                            <i data-lucide="heart" class="w-3 h-3 fill-rose-400 text-rose-400"></i>
+                            <span>Sealed</span>
+                        </span>
+                    </div>
+                    <h3 class="font-serif text-lg sm:text-xl font-semibold text-white group-hover:text-rose-200 transition-colors mb-1">
+                        Before Takeoff &amp; Departure
+                    </h3>
+                    <p class="text-xs sm:text-sm text-rose-100/65">
+                        Take a deep breath and read this right as you're heading out.
+                    </p>
+                </button>
+
+                <!-- Card 2 -->
+                <button type="button" onclick="openEnvelope(1)" class="envelope-btn text-left glass-card glass-card-hover rounded-2xl p-5 sm:p-6 group relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-rose-400">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400/25 to-rose-400/20 border border-amber-300/30 flex items-center justify-center text-amber-200 group-hover:scale-110 transition-transform">
+                            <i data-lucide="headphones" class="w-5 h-5"></i>
+                        </div>
+                        <span class="wax-seal inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-200 border border-rose-400/30">
+                            <i data-lucide="heart" class="w-3 h-3 fill-rose-400 text-rose-400"></i>
+                            <span>Sealed</span>
+                        </span>
+                    </div>
+                    <h3 class="font-serif text-lg sm:text-xl font-semibold text-white group-hover:text-rose-200 transition-colors mb-1">
+                        When You're Bored on the Way
+                    </h3>
+                    <p class="text-xs sm:text-sm text-rose-100/65">
+                        For long stretches, waiting lounges, or staring out the window.
+                    </p>
+                </button>
+
+                <!-- Card 3 -->
+                <button type="button" onclick="openEnvelope(2)" class="envelope-btn text-left glass-card glass-card-hover rounded-2xl p-5 sm:p-6 group relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-rose-400">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-purple-400/25 to-rose-400/20 border border-rose-300/30 flex items-center justify-center text-rose-300 group-hover:scale-110 transition-transform">
+                            <i data-lucide="moon-star" class="w-5 h-5"></i>
+                        </div>
+                        <span class="wax-seal inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-200 border border-rose-400/30">
+                            <i data-lucide="heart" class="w-3 h-3 fill-rose-400 text-rose-400"></i>
+                            <span>Sealed</span>
+                        </span>
+                    </div>
+                    <h3 class="font-serif text-lg sm:text-xl font-semibold text-white group-hover:text-rose-200 transition-colors mb-1">
+                        When You Miss Me
+                    </h3>
+                    <p class="text-xs sm:text-sm text-rose-100/65">
+                        Whenever the distance feels even a tiny bit too quiet.
+                    </p>
+                </button>
+
+                <!-- Card 4 -->
+                <button type="button" onclick="openEnvelope(3)" class="envelope-btn text-left glass-card glass-card-hover rounded-2xl p-5 sm:p-6 group relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-rose-400">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-400/20 to-amber-300/20 border border-amber-200/30 flex items-center justify-center text-amber-200 group-hover:scale-110 transition-transform">
+                            <i data-lucide="map-pin-check" class="w-5 h-5"></i>
+                        </div>
+                        <span class="wax-seal inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-200 border border-rose-400/30">
+                            <i data-lucide="heart" class="w-3 h-3 fill-rose-400 text-rose-400"></i>
+                            <span>Sealed</span>
+                        </span>
+                    </div>
+                    <h3 class="font-serif text-lg sm:text-xl font-semibold text-white group-hover:text-rose-200 transition-colors mb-1">
+                        When You Land &amp; Arrive Safely
+                    </h3>
+                    <p class="text-xs sm:text-sm text-rose-100/65">
+                        Save this one until your feet are safely on the ground!
+                    </p>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 3: TRAVEL CHECKLIST & REMINDERS -->
+        <section aria-labelledby="checklist-heading" class="mb-14 sm:mb-16">
+            <div class="glass-card rounded-3xl p-6 sm:p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 id="checklist-heading" class="font-serif text-2xl font-semibold text-white">
+                            Sweet Travel Reminders
+                        </h2>
+                        <p class="text-xs sm:text-sm text-rose-100/70 mt-1">
+                            Tap each little promise as you go through your trip
+                        </p>
+                    </div>
+                    <div id="checklist-counter" class="text-xs font-semibold px-3 py-1.5 rounded-full bg-white/10 text-amber-200 border border-white/10">
+                        0 / 5
+                    </div>
+                </div>
+
+                <ul id="travel-checklist" class="space-y-3">
+                    <!-- Checklist items injected cleanly via JS for state persistence -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 4: PROMINENT "I ARRIVED SAFELY!" CELEBRATION CTA -->
+        <section class="text-center">
+            <div class="glass-card rounded-3xl p-7 sm:p-10 border-rose-300/25 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-rose-500/10 to-amber-400/5 pointer-events-none"></div>
+                
+                <div class="relative z-10">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-400 flex items-center justify-center shadow-lg shadow-rose-500/30 animate-float-slow">
+                        <i data-lucide="heart-handshake" class="w-7 h-7 text-white"></i>
+                    </div>
+
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-2">
+                        Made It to Your Destination?
+                    </h2>
+                    <p class="text-sm sm:text-base text-rose-100/75 max-w-md mx-auto mb-7">
+                        Tap the button below the moment you arrive so we can celebrate—and don't forget to send me a quick text!
+                    </p>
+
+                    <button id="arrived-btn" type="button" onclick="celebrateArrival()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full font-semibold text-base sm:text-lg text-white bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 hover:from-rose-400 hover:to-amber-400 shadow-xl shadow-rose-500/30 hover:shadow-rose-500/50 active:scale-95 transition-all duration-200 cursor-pointer">
+                        <span>I Arrived Safely!</span>
+                        <span class="text-xl leading-none">❤️</span>
+                    </button>
+
+                    <!-- Hidden Sweet Celebration Reveal Box -->
+                    <div id="arrival-banner" class="hidden mt-7 p-5 rounded-2xl bg-white/10 border border-rose-300/35 text-center transition-all duration-500">
+                        <p class="font-serif text-xl sm:text-2xl text-amber-200 font-semibold mb-1.5">
+                            Yay!! You made it safely! 🎉💖
+                        </p>
+                        <p class="text-sm sm:text-base text-rose-50/90 leading-relaxed mb-4">
+                            I'm breathing the biggest sigh of relief right now. Now go open WhatsApp / iMessage and tell me all about your trip—I'm waiting to hear your voice!
+                        </p>
+                        <button type="button" onclick="copySweetReply()" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium bg-white/15 hover:bg-white/25 text-white border border-white/20 transition-colors">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span id="copy-btn-text">Copy "I landed safely! ❤️" to paste in chat</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Signature -->
+            <footer class="mt-12 text-center text-xs text-rose-200/50 space-y-1">
+                <p>Made with all my love, counting down until you're back in my arms.</p>
+                <p class="text-[11px] text-rose-200/35">Safe travels, always ✨</p>
+            </footer>
+        </section>
+
+    </main>
+
+    <!-- Floating "Tap for Love / Send a Kiss" Quick Action Button -->
+    <button type="button" onclick="sendFloatingKiss(event)" aria-label="Tap for a burst of love" title="Tap for a kiss & floating hearts!" class="fixed bottom-5 right-5 z-30 w-13 h-13 p-3.5 rounded-full bg-gradient-to-tr from-rose-500 to-pink-500 hover:from-rose-400 hover:to-amber-400 text-white shadow-xl shadow-rose-500/40 border border-rose-200/30 flex items-center justify-center active:scale-90 transition-all cursor-pointer group">
+        <i data-lucide="heart" class="w-6 h-6 fill-white group-hover:scale-110 transition-transform"></i>
+    </button>
+
+    <!-- MODAL FOR "OPEN WHEN..." LETTERS -->
+    <div id="letter-modal" class="modal-backdrop fixed inset-0 z-40 flex items-center justify-center p-4 bg-twilight-950/80 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content relative w-full max-w-lg rounded-3xl bg-gradient-to-b from-[#251747] to-[#160f2e] border border-rose-300/30 p-6 sm:p-8 shadow-2xl text-left">
+            
+            <!-- Close Button -->
+            <button type="button" onclick="closeEnvelope()" aria-label="Close letter" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-rose-200 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Envelope Header Icon -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/20 border border-rose-400/30 text-rose-200 text-xs font-medium mb-4">
+                <i data-lucide="mail-open" class="w-3.5 h-3.5 text-rose-300"></i>
+                <span id="modal-tag">A Note For You</span>
+            </div>
+
+            <h3 id="modal-title" class="font-serif text-2xl sm:text-3xl font-bold text-white mb-4 leading-snug">
+                Letter Title
+            </h3>
+
+            <!-- Letter Body -->
+            <div id="modal-body" class="space-y-3.5 text-sm sm:text-base text-rose-100/90 leading-relaxed font-normal border-t border-b border-white/10 py-5 my-4">
+                <!-- Dynamic paragraphs inserted here -->
+            </div>
+
+            <!-- Modal Footer Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
+                <span class="font-serif italic text-sm text-amber-200/90">
+                    Forever yours ❤️
+                </span>
+
+                <button id="hug-btn" type="button" onclick="sendVirtualHug(event)" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-400 hover:to-pink-400 shadow-lg shadow-rose-500/25 active:scale-95 transition-all cursor-pointer">
+                    <i data-lucide="heart" class="w-4 h-4 fill-white"></i>
+                    <span id="hug-btn-label">Send a Virtual Hug</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        /* ==========================================================================
+           0. PERMANENT PHOTO CONFIGURATION FOR GITHUB PAGES DEPLOYMENT
+           Replace "" below with a local file in your repo (e.g. "./her-photo.jpg")
+           or a direct image URL so her photo loads automatically for everyone!
+           ========================================================================== */
+        const DEFAULT_HER_PHOTO_URL = "";
+
+        /* ==========================================================================
+           1. PERSONALIZED PARTNER NAME & PHOTO (URL PARAMS + UPLOAD + LOCAL STORAGE)
+           ========================================================================== */
+        const nameEl = document.getElementById('partner-name');
+        const photoImgEl = document.getElementById('partner-photo');
+        const photoPlaceholderEl = document.getElementById('photo-placeholder');
+        const photoFileInput = document.getElementById('photo-file-input');
+        const uploadPhotoLabel = document.getElementById('upload-photo-label');
+        const removePhotoBtn = document.getElementById('remove-photo-btn');
+        let currentHostedPhotoUrl = "";
+
+        function applyPartnerPhoto(src, isHostedUrl = false) {
+            if (!src) return;
+            photoImgEl.src = src;
+            photoImgEl.onload = () => {
+                photoImgEl.classList.remove('hidden');
+                photoPlaceholderEl.classList.add('hidden');
+                uploadPhotoLabel.textContent = 'Change Photo';
+                removePhotoBtn.classList.remove('hidden');
+                if (isHostedUrl) currentHostedPhotoUrl = src;
+            };
+            photoImgEl.onerror = () => {
+                // Fallback gracefully to placeholder if URL fails to load
+                photoImgEl.classList.add('hidden');
+                photoPlaceholderEl.classList.remove('hidden');
+            };
+        }
+
+        function triggerPhotoUpload() {
+            photoFileInput.click();
+        }
+
+        function handlePhotoUpload(event) {
+            const file = event.target.files && event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const dataUrl = e.target.result;
+                currentHostedPhotoUrl = "";
+                applyPartnerPhoto(dataUrl, false);
+                try {
+                    localStorage.setItem('safe_journey_partner_photo', dataUrl);
+                } catch (err) {
+                    // Ignore quota limits for very large images; preview still works in-session
+                }
+                const rect = photoImgEl.getBoundingClientRect();
+                spawnHeartBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 24);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function resetPartnerPhoto() {
+            localStorage.removeItem('safe_journey_partner_photo');
+            photoFileInput.value = '';
+            currentHostedPhotoUrl = "";
+            if (DEFAULT_HER_PHOTO_URL) {
+                applyPartnerPhoto(DEFAULT_HER_PHOTO_URL, true);
+            } else {
+                photoImgEl.src = '';
+                photoImgEl.classList.add('hidden');
+                photoPlaceholderEl.classList.remove('hidden');
+                uploadPhotoLabel.textContent = 'Upload Photo';
+                removePhotoBtn.classList.add('hidden');
+            }
+        }
+
+        function initPersonalization() {
+            const params = new URLSearchParams(window.location.search);
+            const urlName = params.get('name');
+            const urlPhoto = params.get('photo');
+            const savedName = localStorage.getItem('safe_journey_partner_name');
+            const savedPhoto = localStorage.getItem('safe_journey_partner_photo');
+
+            // Initialize Name
+            if (urlName && urlName.trim().length > 0) {
+                nameEl.textContent = urlName.trim();
+                document.title = `Have a Safe & Wonderful Journey, ${urlName.trim()}`;
+            } else if (savedName && savedName.trim().length > 0) {
+                nameEl.textContent = savedName.trim();
+                document.title = `Have a Safe & Wonderful Journey, ${savedName.trim()}`;
+            }
+
+            // Initialize Photo (Priority: ?photo= URL param -> local preview -> DEFAULT_HER_PHOTO_URL)
+            if (urlPhoto && urlPhoto.trim().length > 0) {
+                applyPartnerPhoto(urlPhoto.trim(), true);
+            } else if (savedPhoto) {
+                applyPartnerPhoto(savedPhoto, false);
+            } else if (DEFAULT_HER_PHOTO_URL) {
+                applyPartnerPhoto(DEFAULT_HER_PHOTO_URL, true);
+            }
+        }
+
+        function copyShareableLink() {
+            const url = new URL(window.location.href.split('?')[0]);
+            const partnerName = nameEl.textContent.trim();
+            if (partnerName && partnerName !== 'My Love') {
+                url.searchParams.set('name', partnerName);
+            }
+            if (currentHostedPhotoUrl) {
+                url.searchParams.set('photo', currentHostedPhotoUrl);
+            }
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = url.toString();
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                const label = document.getElementById('share-link-label');
+                label.textContent = 'Personalized Link Copied! ✨';
+                setTimeout(() => {
+                    label.textContent = 'Copy Personalized Link';
+                }, 2800);
+            } catch (err) {
+                console.error('Copy link failed', err);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        nameEl.addEventListener('input', () => {
+            const cleanText = nameEl.textContent.trim();
+            if (cleanText) {
+                localStorage.setItem('safe_journey_partner_name', cleanText);
+                document.title = `Have a Safe & Wonderful Journey, ${cleanText}`;
+            }
+        });
+
+        nameEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                nameEl.blur();
+            }
+        });
+
+        nameEl.addEventListener('blur', () => {
+            if (!nameEl.textContent.trim()) {
+                nameEl.textContent = 'My Love';
+                localStorage.removeItem('safe_journey_partner_name');
+            }
+        });
+
+        initPersonalization();
+
+        /* ==========================================================================
+           2. "OPEN WHEN..." LETTERS DATA & MODAL LOGIC
+           ========================================================================== */
+        const letters = [
+            {
+                tag: "Open Before Takeoff / Departure",
+                title: "Before You Set Off, My Love...",
+                paragraphs: [
+                    "Take one slow, deep breath and smile for me. You've got everything you need, and you are going to have the most wonderful trip.",
+                    "Even though I can't sit right next to you on this journey, picture me holding your hand as you head out. Stay safe, keep your belongings close, and enjoy every single second of the adventure ahead.",
+                    "I'm already so proud of you and cheering you on from right here!"
+                ]
+            },
+            {
+                tag: "Open When You're Bored on the Way",
+                title: "A Little Distraction Just For You",
+                paragraphs: [
+                    "Stuck waiting or staring at the clouds/road? Good thing you opened this! Here is your official reminder that you are the prettiest, sweetest person traveling today.",
+                    "Try spotting something shaped like a heart out the window, put on your favorite comfort playlist, and know that somewhere right now I'm probably smiling thinking about a random memory of us.",
+                    "Also—drink a sip of water right now! Yes, this is a friendly love-mandated hydration check."
+                ]
+            },
+            {
+                tag: "Open When You Miss Me",
+                title: "Close Your Eyes For Five Seconds...",
+                paragraphs: [
+                    "If you're reading this, I miss you just as much—probably even more. Distance is only temporary, and every passing minute is bringing us closer to our next reunion.",
+                    "Put your hand over your heart: every beat is a little echo of how deeply you are loved, appreciated, and cherished.",
+                    "Whenever you have signal, drop me even a single emoji or voice note. Hearing from you always makes my entire day brighter."
+                ]
+            },
+            {
+                tag: "Open When You Land & Arrive Safely",
+                title: "Welcome to Your Destination! ✨",
+                paragraphs: [
+                    "You made it! Take a moment to stretch, grab your bags, and soak in being there safely.",
+                    "Thank you for taking care of yourself on the way. Now go make amazing memories, eat something delicious, and have the absolute best time.",
+                    "Don't forget to hit the 'I Arrived Safely! ❤️' button at the bottom of this page and text me so I can officially stop worrying!"
+                ]
+            }
+        ];
+
+        const modal = document.getElementById('letter-modal');
+        const modalTag = document.getElementById('modal-tag');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const hugBtnLabel = document.getElementById('hug-btn-label');
+        const envelopeButtons = document.querySelectorAll('.envelope-btn');
+
+        function openEnvelope(index) {
+            const letter = letters[index];
+            if (!letter) return;
+
+            const partner = nameEl.textContent.trim() || "My Love";
+            modalTag.textContent = letter.tag;
+            modalTitle.textContent = letter.title;
+
+            modalBody.innerHTML = letter.paragraphs
+                .map(p => `<p>${p}</p>`)
+                .join('');
+
+            hugBtnLabel.textContent = `Send a Virtual Hug to ${partner}`;
+            modal.classList.add('active');
+
+            // Mark card seal as "Opened"
+            const btn = envelopeButtons[index];
+            if (btn) {
+                const seal = btn.querySelector('.wax-seal');
+                if (seal) {
+                    seal.innerHTML = `<i data-lucide="check" class="w-3 h-3 text-amber-300"></i><span>Opened</span>`;
+                    seal.classList.remove('bg-rose-500/20', 'text-rose-200', 'border-rose-400/30');
+                    seal.classList.add('bg-amber-400/20', 'text-amber-200', 'border-amber-300/30');
+                    lucide.createIcons();
+                }
+            }
+        }
+
+        function closeEnvelope() {
+            modal.classList.remove('active');
+        }
+
+        // Close modal on backdrop click or Escape key
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeEnvelope();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeEnvelope();
+            }
+        });
+
+        /* ==========================================================================
+           3. TRAVEL CHECKLIST & REMINDERS (INTERACTIVE WITH MICRO-INTERACTIONS)
+           ========================================================================== */
+        const defaultReminders = [
+            { id: 'r1', text: 'Stay hydrated & grab a yummy snack on the way', icon: 'cup-soda', done: false },
+            { id: 'r2', text: 'Keep your phone charged & charger handy', icon: 'battery-charging', done: false },
+            { id: 'r3', text: 'Take lots of cute photos to show me later', icon: 'camera', done: false },
+            { id: 'r4', text: 'Text me as soon as you reach safely', icon: 'message-circle-heart', done: false },
+            { id: 'r5', text: 'Remember how endlessly much I love you ❤️', icon: 'sparkles', done: true }
+        ];
+
+        let checklistState = JSON.parse(localStorage.getItem('safe_journey_checklist')) || defaultReminders;
+        const checklistContainer = document.getElementById('travel-checklist');
+        const counterEl = document.getElementById('checklist-counter');
+
+        function renderChecklist() {
+            checklistContainer.innerHTML = '';
+            let completedCount = 0;
+
+            checklistState.forEach((item, idx) => {
+                if (item.done) completedCount++;
+
+                const li = document.createElement('li');
+                li.className = `check-item flex items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer select-none ${
+                    item.done
+                        ? 'completed bg-rose-500/10 border-rose-400/30'
+                        : 'bg-white/5 hover:bg-white/10 border-white/10'
+                }`;
+
+                li.onclick = (e) => toggleChecklistItem(idx, e);
+
+                li.innerHTML = `
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-6 h-6 rounded-full flex items-center justify-center border transition-all ${
+                            item.done
+                                ? 'bg-gradient-to-tr from-rose-500 to-amber-400 border-transparent text-white scale-105 shadow-md shadow-rose-500/30'
+                                : 'border-rose-200/40 bg-white/5 text-transparent'
+                        }">
+                            <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
+                        </div>
+                        <span class="check-item-text text-sm sm:text-base font-medium text-rose-50">
+                            ${item.text}
+                        </span>
+                    </div>
+                    <i data-lucide="${item.icon}" class="w-4 h-4 shrink-0 ${item.done ? 'text-rose-300' : 'text-rose-200/40'}"></i>
+                `;
+
+                checklistContainer.appendChild(li);
+            });
+
+            counterEl.textContent = `${completedCount} / ${checklistState.length}`;
+            lucide.createIcons();
+        }
+
+        function toggleChecklistItem(index, event) {
+            checklistState[index].done = !checklistState[index].done;
+            localStorage.setItem('safe_journey_checklist', JSON.stringify(checklistState));
+            renderChecklist();
+
+            if (checklistState[index].done && event) {
+                spawnHeartBurst(event.clientX, event.clientY, 12);
+            }
+        }
+
+        renderChecklist();
+
+        /* ==========================================================================
+           4. CELEBRATION & VIRTUAL HUG PARTICLE ENGINE (CANVAS HEARTS & CONFETTI)
+           ========================================================================== */
+        const celebCanvas = document.getElementById('celebration-canvas');
+        const celebCtx = celebCanvas.getContext('2d');
+        let particles = [];
+
+        function resizeCelebrationCanvas() {
+            celebCanvas.width = window.innerWidth;
+            celebCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCelebrationCanvas);
+        resizeCelebrationCanvas();
+
+        const heartColors = ['#fb7185', '#f43f5e', '#fda4af', '#fcd34d', '#f9a8d4', '#ffffff'];
+
+        function spawnHeartBurst(originX, originY, count = 28) {
+            for (let i = 0; i < count; i++) {
+                const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
+                const speed = 2.5 + Math.random() * 6.5;
+                particles.push({
+                    x: originX,
+                    y: originY,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed - 2.5,
+                    size: 10 + Math.random() * 12,
+                    color: heartColors[Math.floor(Math.random() * heartColors.length)],
+                    alpha: 1,
+                    decay: 0.012 + Math.random() * 0.01,
+                    rotation: (Math.random() - 0.5) * 0.6,
+                    vRot: (Math.random() - 0.5) * 0.05,
+                    isHeart: Math.random() > 0.25
+                });
+            }
+        }
+
+        function drawHeartShape(ctx, x, y, size, color, alpha, rotation) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rotation);
+            ctx.globalAlpha = Math.max(0, alpha);
+            ctx.fillStyle = color;
+
+            const topCurveHeight = size * 0.3;
+            ctx.beginPath();
+            ctx.moveTo(0, topCurveHeight);
+            ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
+            ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, (size + topCurveHeight) / 1.4, 0, size);
+            ctx.bezierCurveTo(0, (size + topCurveHeight) / 1.4, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
+            ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function animateCelebration() {
+            celebCtx.clearRect(0, 0, celebCanvas.width, celebCanvas.height);
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.12; // Gentle gravity
+                p.vx *= 0.98;
+                p.rotation += p.vRot;
+                p.alpha -= p.decay;
+
+                if (p.alpha <= 0) {
+                    particles.splice(i, 1);
+                    continue;
+                }
+
+                if (p.isHeart) {
+                    drawHeartShape(celebCtx, p.x, p.y - p.size / 2, p.size, p.color, p.alpha, p.rotation);
+                } else {
+                    celebCtx.save();
+                    celebCtx.translate(p.x, p.y);
+                    celebCtx.rotate(p.rotation);
+                    celebCtx.globalAlpha = Math.max(0, p.alpha);
+                    celebCtx.fillStyle = p.color;
+                    celebCtx.fillRect(-p.size / 3, -p.size / 3, p.size / 1.5, p.size / 2.5);
+                    celebCtx.restore();
+                }
+            }
+
+            requestAnimationFrame(animateCelebration);
+        }
+
+        // Virtual Hug Button Handler inside Modal
+        function sendVirtualHug(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+
+            spawnHeartBurst(x, y, 36);
+            hugBtnLabel.textContent = "Warmest Hug Sent! 🤗❤️";
+
+            setTimeout(() => {
+                const partner = nameEl.textContent.trim() || "My Love";
+                hugBtnLabel.textContent = `Send Another Hug to ${partner}`;
+            }, 2200);
+        }
+
+        // Floating Bottom-Right Kiss / Love Burst Button
+        function sendFloatingKiss(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            spawnHeartBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 26);
+        }
+
+        // Main "I Arrived Safely!" Button Handler
+        function celebrateArrival() {
+            const banner = document.getElementById('arrival-banner');
+            const btn = document.getElementById('arrived-btn');
+
+            banner.classList.remove('hidden');
+            btn.innerHTML = `<span>Safely Arrived!</span> <span class="text-xl">🎉❤️</span>`;
+
+            // Multi-point celebratory fireworks of hearts & confetti
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            spawnHeartBurst(w * 0.5, h * 0.55, 55);
+            setTimeout(() => spawnHeartBurst(w * 0.25, h * 0.45, 35), 220);
+            setTimeout(() => spawnHeartBurst(w * 0.75, h * 0.45, 35), 420);
+        }
+
+        // Copy quick reply helper using execCommand for full compatibility
+        function copySweetReply() {
+            const textToCopy = "I landed & arrived safely! ❤️ Thinking of you!";
+            const tempInput = document.createElement('textarea');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                const label = document.getElementById('copy-btn-text');
+                label.textContent = "Copied! Ready to paste in your messages ✨";
+                setTimeout(() => {
+                    label.textContent = 'Copy "I landed safely! ❤️" to paste in chat';
+                }, 3000);
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        /* ==========================================================================
+           5. AMBIENT TWINKLING STARS & FLOATING HEARTS SKY CANVAS
+           ========================================================================== */
+        const skyCanvas = document.getElementById('sky-canvas');
+        const skyCtx = skyCanvas.getContext('2d');
+        let stars = [];
+        let ambientHearts = [];
+
+        function initSky() {
+            skyCanvas.width = window.innerWidth;
+            skyCanvas.height = window.innerHeight;
+
+            const starCount = Math.min(95, Math.floor((skyCanvas.width * skyCanvas.height) / 14000));
+            stars = Array.from({ length: starCount }, () => ({
+                x: Math.random() * skyCanvas.width,
+                y: Math.random() * skyCanvas.height,
+                r: 0.6 + Math.random() * 1.6,
+                baseAlpha: 0.2 + Math.random() * 0.65,
+                phase: Math.random() * Math.PI * 2,
+                speed: 0.015 + Math.random() * 0.025
+            }));
+
+            ambientHearts = Array.from({ length: 10 }, () => ({
+                x: Math.random() * skyCanvas.width,
+                y: Math.random() * skyCanvas.height,
+                size: 8 + Math.random() * 8,
+                vy: -(0.2 + Math.random() * 0.35),
+                driftPhase: Math.random() * Math.PI * 2,
+                alpha: 0.08 + Math.random() * 0.14
+            }));
+        }
+
+        window.addEventListener('resize', initSky);
+        initSky();
+
+        function animateSky() {
+            skyCtx.clearRect(0, 0, skyCanvas.width, skyCanvas.height);
+
+            // Draw Twinkling Stars
+            for (const s of stars) {
+                s.phase += s.speed;
+                const alpha = s.baseAlpha + Math.sin(s.phase) * 0.25;
+                skyCtx.beginPath();
+                skyCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                skyCtx.fillStyle = `rgba(255, 241, 242, ${Math.max(0.05, alpha)})`;
+                skyCtx.fill();
+            }
+
+            // Draw Subtle Drifting Hearts
+            for (const h of ambientHearts) {
+                h.y += h.vy;
+                h.driftPhase += 0.015;
+                const xOffset = Math.sin(h.driftPhase) * 14;
+
+                if (h.y < -20) {
+                    h.y = skyCanvas.height + 20;
+                    h.x = Math.random() * skyCanvas.width;
+                }
+
+                drawHeartShape(skyCtx, h.x + xOffset, h.y, h.size, '#fda4af', h.alpha, Math.sin(h.driftPhase) * 0.2);
+            }
+
+            requestAnimationFrame(animateSky);
+        }
+
+        // Start animation loops on window load
+        window.onload = function () {
+            animateSky();
+            animateCelebration();
+        };
+    </script>
+</body>
+</html>
